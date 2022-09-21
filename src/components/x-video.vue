@@ -1,5 +1,5 @@
 <template>
-    <div class="x-player">
+    <div class="x-video">
         <video id="player">
             <template v-for="item in sources">
                 <source :src="item.src" :type="item.type">

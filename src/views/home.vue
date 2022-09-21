@@ -5,7 +5,7 @@
             <el-container>
                 <el-header>Header</el-header>
                 <el-main>
-                    <x-player :options="options" :sources="sources"></x-player>
+                    <x-video :options="options" :sources="sources"></x-video>
                 </el-main>
                 <el-footer>Footer</el-footer>
             </el-container>
