@@ -1,14 +1,28 @@
 <template>
     <div class="x-player">
-        <h1>我是 player 嗷</h1>
-        <div id="player"></div>
+        <video id="player">
+            <template v-for="item in sources">
+                <source :src="item.src" :type="item.type">
+            </template>
+        </video>
     </div>
 </template>
 
 <script setup lang="ts">
 import Plyr from 'plyr';
+import { Options } from 'plyr'
+import { IXSource } from '@/config/x-type';
 
-const player = new Plyr('#player');
+
+const props = defineProps<{
+    options: Options,
+    sources: IXSource[]
+}>()
+
+onMounted(() => {
+    const player = new Plyr('#player', props.options);
+})
+
 </script>
 
 <style scoped>
