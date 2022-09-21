@@ -12,6 +12,7 @@
 import Plyr from 'plyr';
 import { Options } from 'plyr'
 import { IXSource } from '@/config/x-type';
+import { onKeyDown } from '@vueuse/core';
 
 
 const props = defineProps<{
@@ -24,6 +25,16 @@ onMounted(() => {
     player.value = new Plyr('#player', props.options);
     console.log(props.options);
 })
+
+// 禁止浏览器空格下滑滚动条
+document.onkeydown = (event) => {
+    if (event.code === 'Space') {
+        const { value: pv } = player
+        if (pv!.playing) pv!.pause()
+        else pv!.play()
+        return false;
+    }
+};
 
 </script>
 
