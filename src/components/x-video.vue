@@ -18,9 +18,10 @@ const props = defineProps<{
     options: Options,
     sources: IXSource[]
 }>()
+const player = ref<Plyr>()
 
 onMounted(() => {
-    const player = new Plyr('#player', props.options);
+    player.value = new Plyr('#player', props.options);
     console.log(props.options);
 })
 

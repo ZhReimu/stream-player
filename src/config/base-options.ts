@@ -6,6 +6,10 @@ const baseOptions: Options = {
         controls: true,
         seek: true
     },
+    keyboard: {
+        focused: false,
+        global: true
+    },
     i18n: {
         restart: '重播',
         rewind: '快退 {seektime}s',
