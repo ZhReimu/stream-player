@@ -21,7 +21,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "auto-import.d.ts"
+    "auto-import.d.ts",
+    "vite-env.d.ts"
   ],
   "references": [
     {
