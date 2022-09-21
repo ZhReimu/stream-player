@@ -1,10 +1,10 @@
-import router from './router'
-import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import ElementPlus from 'element-plus'
 import 'plyr/dist/plyr.css'
+import router from './router'
+import { createApp } from 'vue'
 import 'element-plus/dist/index.css'
+import ElementPlus from 'element-plus'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 

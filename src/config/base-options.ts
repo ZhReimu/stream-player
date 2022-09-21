@@ -1,6 +1,11 @@
 import { Options } from "plyr";
 
 const baseOptions: Options = {
+    invertTime: false,
+    tooltips: {
+        controls: true,
+        seek: true
+    },
     i18n: {
         restart: '重播',
         rewind: '快退 {seektime}s',

@@ -21,10 +21,14 @@ const props = defineProps<{
 
 onMounted(() => {
     const player = new Plyr('#player', props.options);
+    console.log(props.options);
 })
 
 </script>
 
 <style scoped>
-
+.x-video {
+    width: 90%;
+    height: 90%;
+}
 </style>
