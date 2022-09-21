@@ -27,5 +27,4 @@ dist-ssr
 auto-imports.d.ts
 components.d.ts
 src/auto-import.d.ts
-src/vite-env.d.ts
 auto-import.d.ts
