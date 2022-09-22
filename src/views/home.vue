@@ -9,6 +9,7 @@
                     <x-aside @onSelected="onSelected"></x-aside>
                 </el-aside>
                 <el-main>
+                    <el-empty v-show="!source" description="请点击左侧视频文件来播放" />
                     <x-video v-show="source" :options="options" :source="source"></x-video>
                 </el-main>
             </el-container>
