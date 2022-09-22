@@ -9,7 +9,5 @@
 </script>
 
 <style lang="scss" scoped>
-.app-App {
-  height: 100%;
-}
+
 </style>
