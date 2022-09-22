@@ -1,4 +1,4 @@
-import { clearData } from "@/api/filebrowser";
+import { clearData, getToken } from "@/api/filebrowser";
 import axios from "axios";
 import { XMessage } from '@/utils/x-message'
 
@@ -10,7 +10,11 @@ const request = axios.create({
     baseURL
 });
 
-request.interceptors.request.use(config => {
+request.interceptors.request.use((config) => {
+    const token = getToken()
+    if (token) config.headers = {
+        "X-Auth": token
+    }
     return config;
 })
 

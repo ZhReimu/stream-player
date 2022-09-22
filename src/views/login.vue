@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { IXUser } from '@/config/x-type';
-import { login, setToken } from '@/api/filebrowser'
+import { login, setToken, usage } from '@/api/filebrowser'
 import { XMessage } from '@/utils/x-message'
 
 const router = useRouter()
@@ -34,6 +34,12 @@ const submitForm = () => {
         })
     })
 }
+
+usage().then(data => {
+    console.log(data);
+
+})
+
 
 </script>
 

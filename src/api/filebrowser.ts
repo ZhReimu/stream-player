@@ -1,8 +1,12 @@
 import { request } from "@/config/axios.config";
-import { IXUser } from "@/config/x-type";
+import { IXUser, IUsage } from "@/config/x-type";
 
 const login = (user: IXUser) => {
     return request.post('/login', user) as Promise<string>
+}
+
+const usage = () => {
+    return request.get('/usage') as Promise<IUsage>
 }
 
 const setToken = (token: string) => {
@@ -21,5 +25,6 @@ export {
     login,
     setToken,
     getToken,
-    clearData
+    clearData,
+    usage
 }

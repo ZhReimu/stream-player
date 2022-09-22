@@ -9,7 +9,13 @@ interface IXUser {
     recaptcha: string?
 }
 
+interface IUsage {
+    total: number
+    used: number
+}
+
 export type {
     IXSource,
-    IXUser
+    IXUser,
+    IUsage
 }
