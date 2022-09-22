@@ -44,7 +44,7 @@ const loadNode = (node: Node, resolve: (data: Tree[]) => void) => {
                 item: it,
                 leaf: !it.isDir
             }
-        })
+        }).filter(it => it.name.endsWith('.mp4') || it.item.isDir)
         resolve(data)
     })
 }

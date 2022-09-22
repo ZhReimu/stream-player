@@ -16,7 +16,6 @@ const props = defineProps<{
 var player: Plyr
 
 watch(() => props.source, (newValue, oldValue) => {
-    console.log('watch: ', newValue);
     if (player) {
         player.source = {
             type: 'video',
