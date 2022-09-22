@@ -37,11 +37,16 @@ const onSelected = (url: string) => {
 
 <style scoped>
 .home>.el-container {
-    height: 100%;
+    height: 100vh;
 }
 
 .el-header {
     height: 40px;
+}
+
+.el-empty {
+    padding: 0;
+    padding-bottom: 20px;
 }
 </style>
     

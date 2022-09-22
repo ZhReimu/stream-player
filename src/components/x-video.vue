@@ -56,6 +56,7 @@ document.onkeydown = (event) => {
 
 .mobile-video {
     width: 100%;
-    height: 100%;
+    height: auto;
+    margin-bottom: 34px;
 }
 </style>
