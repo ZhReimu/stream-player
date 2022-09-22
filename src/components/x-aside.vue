@@ -1,6 +1,8 @@
 <template>
     <div class="tree">
-        <el-tree :props="props" :load="loadNode" @node-click="handleNodeClick" lazy highlight-current />
+        <el-menu :collapse="toggle">
+            <el-tree :props="props" :load="loadNode" @node-click="handleNodeClick" lazy highlight-current />
+        </el-menu>
     </div>
 </template>
 
@@ -20,6 +22,10 @@ const props = {
     children: 'zones',
     isLeaf: 'leaf',
 }
+
+defineProps<{
+    toggle: Boolean,
+}>()
 
 const instance = getCurrentInstance()
 
