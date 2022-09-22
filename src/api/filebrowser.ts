@@ -1,4 +1,4 @@
-import { request } from "@/config/axios.config";
+import { request, baseURL } from "@/config/axios.config";
 import { IXUser, IUsage, IResource } from "@/config/x-type";
 
 const login = (user: IXUser) => {
@@ -11,6 +11,10 @@ const usage = () => {
 
 const resources = () => {
     return request.get('/resources') as Promise<IResource>
+}
+
+const downloadURL = (path: string) => {
+    return `${baseURL}raw/${path}?auth=${getToken()}`
 }
 
 const setToken = (token: string) => {
@@ -31,5 +35,6 @@ export {
     getToken,
     clearData,
     usage,
-    resources
+    resources,
+    downloadURL
 }

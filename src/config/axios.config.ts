@@ -33,5 +33,6 @@ request.interceptors.response.use((response) => {
 });
 
 export {
-    request
+    request,
+    baseURL
 }

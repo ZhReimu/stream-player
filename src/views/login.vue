@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { IXUser } from '@/config/x-type';
-import { login, setToken, usage, resources } from '@/api/filebrowser'
+import { login, setToken, usage, resources, downloadURL } from '@/api/filebrowser'
 import { XMessage } from '@/utils/x-message'
 
 const router = useRouter()
@@ -43,6 +43,7 @@ resources().then(data => {
     console.log(data);
 })
 
+console.log(downloadURL('filebrowser.exe'));
 </script>
 
 <style scoped>
