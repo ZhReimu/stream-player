@@ -1,7 +1,7 @@
 {
-  "name": "vite-ts",
+  "name": "stream-player",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -24,7 +24,7 @@
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.7",
     "vite": "^3.1.0",
-    "vite-plugin-singlefile": "^0.11.1",
+    "vite-plugin-singlefile": "^0.12.1",
     "vue-tsc": "^0.40.4"
   }
 }
