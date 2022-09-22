@@ -1,5 +1,6 @@
 <template>
     <div class="login">
+        <h1>StreamPlayer</h1>
         <el-form label-position="left" label-width="100px" :model="loginForm" style="max-width: 460px">
             <el-form-item label="用户名">
                 <el-input v-model="loginForm.username" />
