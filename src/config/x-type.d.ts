@@ -40,9 +40,16 @@ interface IResource {
     type: string
 }
 
+interface Tree {
+    name: string,
+    item?: IItem
+    leaf?: boolean
+}
+
 export type {
     IXUser,
     IUsage,
     IResource,
-    IItem
+    IItem,
+    Tree
 }

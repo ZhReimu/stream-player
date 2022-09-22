@@ -1,33 +1,38 @@
 <template>
     <div class="tree">
-        <el-menu :collapse="toggle">
-            <el-tree :props="props" :load="loadNode" @node-click="handleNodeClick" lazy highlight-current />
-        </el-menu>
+        <template v-if="canCollapse">
+            <div class="toggle" @click="collapseHandler">
+                <el-icon v-if="toggle">
+                    <Expand />
+                </el-icon>
+                <el-icon v-else>
+                    <Fold />
+                </el-icon>
+            </div>
+            <el-menu :collapse="toggle">
+                <x-play-list :loadNode="loadNode" :handleNodeClick="handleNodeClick" />
+            </el-menu>
+        </template>
+        <template v-else>
+            <x-play-list :loadNode="loadNode" :handleNodeClick="handleNodeClick" />
+        </template>
     </div>
 </template>
 
 <script lang="ts" setup>
 import type Node from 'element-plus/es/components/tree/src/model/node'
 import { resources, downloadURL, renew, setToken } from '@/api/filebrowser'
-import { IItem } from '@/config/x-type'
-
-interface Tree {
-    name: string,
-    item?: IItem
-    leaf?: boolean
-}
-
-const props = {
-    label: 'name',
-    children: 'zones',
-    isLeaf: 'leaf',
-}
+import { Tree } from '@/config/x-type'
 
 defineProps<{
-    toggle: Boolean,
+    canCollapse: boolean
 }>()
 
 const instance = getCurrentInstance()
+const toggle = ref(true);
+const collapseHandler = () => {
+    toggle.value = !toggle.value;
+};
 
 const handleNodeClick = (data: Tree) => {
     if (data.leaf) {
@@ -55,3 +60,10 @@ const loadNode = (node: Node, resolve: (data: Tree[]) => void) => {
     })
 }
 </script>
+
+<style scoped>
+.toggle {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+</style>

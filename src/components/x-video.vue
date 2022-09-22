@@ -1,5 +1,5 @@
 <template>
-    <div class="x-video">
+    <div :class="clazz">
         <video id="player"></video>
     </div>
 </template>
@@ -14,6 +14,8 @@ const props = defineProps<{
 }>()
 
 var player: Plyr
+
+const clazz = navigator.userAgent.includes('Android') ? 'mobile-video' : 'pc-video'
 
 watch(() => props.source, (newValue, oldValue) => {
     if (player) {
@@ -47,8 +49,13 @@ document.onkeydown = (event) => {
 </script>
 
 <style scoped>
-.x-video {
+.pc-video {
     width: 90%;
     height: 90%;
+}
+
+.mobile-video {
+    width: 100%;
+    height: 100%;
 }
 </style>
