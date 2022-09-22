@@ -9,12 +9,12 @@ const usage = () => {
     return request.get('/usage') as Promise<IUsage>
 }
 
-const resources = () => {
-    return request.get('/resources') as Promise<IResource>
+const resources = (path: string = '/') => {
+    return request.get(`/resources/${path}`) as Promise<IResource>
 }
 
 const downloadURL = (path: string) => {
-    return `${baseURL}raw/${path}?auth=${getToken()}`
+    return `${baseURL}raw${path.startsWith('/') ? '' : '/'}${path}?auth=${getToken()}`
 }
 
 const setToken = (token: string) => {

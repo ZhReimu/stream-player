@@ -1,14 +1,17 @@
 <template>
-    <div>
-        <el-tree :props="props" :load="loadNode" lazy />
+    <div class="tree">
+        <el-tree :props="props" :load="loadNode" @node-click="handleNodeClick" lazy highlight-current />
     </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import type Node from 'element-plus/es/components/tree/src/model/node'
+import { resources, downloadURL } from '@/api/filebrowser'
+import { IItem } from '@/config/x-type'
 
 interface Tree {
-    name: string
+    name: string,
+    item?: IItem
     leaf?: boolean
 }
 
@@ -18,28 +21,25 @@ const props = {
     isLeaf: 'leaf',
 }
 
+const handleNodeClick = (data: Tree) => {
+    if (data.leaf) {
+        console.log(downloadURL(data.item!.path));
+    }
+}
+
 const loadNode = (node: Node, resolve: (data: Tree[]) => void) => {
     if (node.level === 0) {
-        return resolve([{ name: 'region' }])
+        return resolve([{ name: '/' }])
     }
-    if (node.level > 1) return resolve([])
-
-    setTimeout(() => {
-        const data: Tree[] = [
-            {
-                name: 'leaf',
-                leaf: true,
-            },
-            {
-                name: 'zone',
-            },
-        ]
-
+    resources(node.data.name).then(({ items }) => {
+        const data = items.map(it => {
+            return {
+                name: it.name,
+                item: it,
+                leaf: !it.isDir
+            }
+        })
         resolve(data)
-    }, 500)
+    })
 }
 </script>
-
-<style scoped>
-
-</style>

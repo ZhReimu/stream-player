@@ -49,5 +49,6 @@ export type {
     IXSource,
     IXUser,
     IUsage,
-    IResource
+    IResource,
+    IItem
 }
