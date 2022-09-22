@@ -43,7 +43,7 @@ const submitForm = () => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100vh;
+    height: calc(100vh - 20vh);
     align-items: center;
 }
 </style>
