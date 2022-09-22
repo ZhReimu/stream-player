@@ -1,8 +1,3 @@
-interface IXSource {
-    src: string
-    type: string
-}
-
 interface IXUser {
     username: string
     password: string
@@ -46,7 +41,6 @@ interface IResource {
 }
 
 export type {
-    IXSource,
     IXUser,
     IUsage,
     IResource,

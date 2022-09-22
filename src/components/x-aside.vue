@@ -21,9 +21,12 @@ const props = {
     isLeaf: 'leaf',
 }
 
+const instance = getCurrentInstance()
+
 const handleNodeClick = (data: Tree) => {
     if (data.leaf) {
-        console.log(downloadURL(data.item!.path));
+        const url = downloadURL(data.item!.path)
+        instance!.emit('onSelected', url)
     }
 }
 

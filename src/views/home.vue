@@ -6,10 +6,10 @@
             </el-header>
             <el-container>
                 <el-aside width="200px">
-                    <x-aside></x-aside>
+                    <x-aside @onSelected="onSelected"></x-aside>
                 </el-aside>
                 <el-main>
-                    <x-video :options="options" :sources="sources"></x-video>
+                    <x-video v-show="source" :options="options" :source="source"></x-video>
                 </el-main>
             </el-container>
         </el-container>
@@ -18,24 +18,18 @@
 
 <script setup lang="ts">
 import { Options, baseOptions } from '@/config/base-options';
-import { IXSource } from '@/config/x-type';
+
 
 const options: Options = {
     ...baseOptions
 }
-const url = '/1.mp4'
-const type = 'video/mp4'
 
-const sources: IXSource[] = [
-    {
-        src: url,
-        type
-    },
-    {
-        src: url,
-        type
-    }
-]
+const source = ref('')
+
+const onSelected = (url: string) => {
+    source.value = url
+}
+
 </script>
 
 <style scoped>

@@ -1,33 +1,44 @@
 <template>
     <div class="x-video">
-        <video id="player">
-            <template v-for="item in sources">
-                <source :src="item.src" :type="item.type">
-            </template>
-        </video>
+        <video id="player"></video>
     </div>
 </template>
 
 <script setup lang="ts">
 import Plyr from 'plyr';
 import { Options } from 'plyr'
-import { IXSource } from '@/config/x-type';
-
 
 const props = defineProps<{
     options: Options,
-    sources: IXSource[]
+    source: string
 }>()
-const player = ref<Plyr>()
+
+var player: Plyr
+
+watch(() => props.source, (newValue, oldValue) => {
+    console.log('watch: ', newValue);
+    if (player) {
+        player.source = {
+            type: 'video',
+            sources: [
+                {
+                    src: newValue,
+                    type: 'video/mp4',
+                }
+            ]
+        }
+    }
+}, { deep: true, immediate: true })
 
 onMounted(() => {
-    player.value = new Plyr('#player', props.options);
+    player = new Plyr('#player', props.options);
 })
+
 
 // 禁止浏览器空格下滑滚动条
 document.onkeydown = (event) => {
     if (event.code === 'Space') {
-        const { value: pv } = player
+        const pv = player
         if (pv!.playing) pv!.pause()
         else pv!.play()
         return false;
