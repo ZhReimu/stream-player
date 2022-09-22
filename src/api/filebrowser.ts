@@ -17,6 +17,10 @@ const downloadURL = (path: string) => {
     return `${baseURL}raw${path.startsWith('/') ? '' : '/'}${path}?auth=${getToken()}`
 }
 
+const renew = () => {
+    return request.post('/renew') as Promise<string>
+}
+
 const setToken = (token: string) => {
     sessionStorage.setItem('token', token)
 }
@@ -31,10 +35,11 @@ const clearData = () => {
 
 export {
     login,
+    usage,
+    renew,
     setToken,
     getToken,
     clearData,
-    usage,
     resources,
     downloadURL
 }

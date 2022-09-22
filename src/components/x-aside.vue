@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import type Node from 'element-plus/es/components/tree/src/model/node'
-import { resources, downloadURL } from '@/api/filebrowser'
+import { resources, downloadURL, renew, setToken } from '@/api/filebrowser'
 import { IItem } from '@/config/x-type'
 
 interface Tree {
@@ -26,7 +26,10 @@ const instance = getCurrentInstance()
 const handleNodeClick = (data: Tree) => {
     if (data.leaf) {
         const url = downloadURL(data.item!.path)
-        instance!.emit('onSelected', url)
+        renew().then((data) => {
+            setToken(data)
+            instance!.emit('onSelected', url)
+        })
     }
 }
 
