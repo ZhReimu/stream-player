@@ -1,8 +1,15 @@
 interface IXSource {
-    src: string,
+    src: string
     type: string
 }
 
+interface IXUser {
+    username: string
+    password: string
+    recaptcha: string?
+}
+
 export type {
-    IXSource
+    IXSource,
+    IXUser
 }

@@ -12,7 +12,6 @@
 import Plyr from 'plyr';
 import { Options } from 'plyr'
 import { IXSource } from '@/config/x-type';
-import { onKeyDown } from '@vueuse/core';
 
 
 const props = defineProps<{
@@ -23,7 +22,6 @@ const player = ref<Plyr>()
 
 onMounted(() => {
     player.value = new Plyr('#player', props.options);
-    console.log(props.options);
 })
 
 // 禁止浏览器空格下滑滚动条
