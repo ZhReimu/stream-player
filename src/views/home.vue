@@ -5,7 +5,7 @@
                 <x-header></x-header>
             </el-header>
             <el-container>
-                <el-aside v-if="canCollapse" width="200px">
+                <el-aside v-if="canCollapse">
                     <x-aside :canCollapse="canCollapse" @onSelected="onSelected"></x-aside>
                 </el-aside>
                 <el-main>

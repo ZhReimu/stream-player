@@ -1,6 +1,10 @@
 <template>
     <div>
-        <el-tree :props="props" :load="loadNode" @node-click="handleNodeClick" lazy highlight-current />
+        <el-tree :props="props" :load="loadNode" @node-click="handleNodeClick" lazy highlight-current>
+            <template #default="{ node, data }">
+                <span :title="node.label">{{ node.label }}</span>
+            </template>
+        </el-tree>
     </div>
 </template>
 
