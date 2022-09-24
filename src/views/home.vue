@@ -9,7 +9,7 @@
                     <x-aside :canCollapse="canCollapse" @onSelected="onSelected"></x-aside>
                 </el-aside>
                 <el-main>
-                    <el-empty v-show="!source" description="请点击左侧视频文件来播放" />
+                    <el-empty v-show="!source" description="请点击视频文件来播放" />
                     <x-video v-show="source" :options="options" :source="source"></x-video>
                     <x-aside v-if="!canCollapse" :canCollapse="canCollapse" @onSelected="onSelected"></x-aside>
                 </el-main>

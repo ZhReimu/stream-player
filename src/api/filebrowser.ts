@@ -33,6 +33,14 @@ const clearData = () => {
     sessionStorage.clear()
 }
 
+const setUserName = (userName: string) => {
+    sessionStorage.setItem('userName', userName)
+}
+
+const getUserName = () => {
+    return sessionStorage.getItem('userName')
+}
+
 export {
     login,
     usage,
@@ -41,5 +49,7 @@ export {
     getToken,
     clearData,
     resources,
-    downloadURL
+    downloadURL,
+    getUserName,
+    setUserName
 }

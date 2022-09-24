@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { IXUser } from '@/config/x-type';
-import { login, setToken } from '@/api/filebrowser'
+import { login, setToken, setUserName } from '@/api/filebrowser'
 import { XMessage } from '@/utils/x-message'
 
 const router = useRouter()
@@ -35,6 +35,7 @@ const submitForm = () => {
     sessionStorage.setItem('baseURL', serverAddress.value)
     login(loginForm).then((data) => {
         setToken(data)
+        setUserName(loginForm.username)
         XMessage.success('登录成功', () => {
             router.push('/home')
         })
