@@ -30,7 +30,7 @@ const loginForm = reactive<IXUser>({
     password: 'admin',
     recaptcha: null
 })
-const serverAddress = ref(baseURL)
+const serverAddress = ref(window.location.href + 'api/')
 
 const submitForm = () => {
     sessionStorage.setItem('baseURL', serverAddress.value)
