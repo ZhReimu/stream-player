@@ -10,7 +10,7 @@ const usage = () => {
 }
 
 const resources = (path: string = '/') => {
-    return request.get(`/resources/${path}`) as Promise<IResource>
+    return request.get(`/resources/${path == "/" ? "" : path}`) as Promise<IResource>
 }
 
 const downloadURL = (path: string) => {

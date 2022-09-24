@@ -30,6 +30,7 @@ defineProps<{
 
 const instance = getCurrentInstance()
 const toggle = ref(true);
+const extWhiteList = ['.mp4', '.ts']
 const collapseHandler = () => {
     toggle.value = !toggle.value;
 };
@@ -55,7 +56,7 @@ const loadNode = (node: Node, resolve: (data: Tree[]) => void) => {
                 item: it,
                 leaf: !it.isDir
             }
-        }).filter(it => it.name.endsWith('.mp4') || it.item.isDir)
+        }).filter(it => extWhiteList.includes(it.item.extension) || it.item.isDir)
         resolve(data)
     })
 }

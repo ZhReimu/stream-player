@@ -19,9 +19,7 @@ const getSessionURL = () => {
 }
 
 request.interceptors.request.use((config) => {
-
     config.baseURL = getSessionURL() || baseURL
-    console.log(config.baseURL);
     const token = getToken()
     if (token) config.headers = {
         "X-Auth": token
