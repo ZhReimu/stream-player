@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import { IXUser } from '@/config/x-type';
 import { login, setToken } from '@/api/filebrowser'
+import { baseURL } from '@/config/axios.config';
 import { XMessage } from '@/utils/x-message'
 
 const router = useRouter()
@@ -29,7 +30,7 @@ const loginForm = reactive<IXUser>({
     password: 'admin',
     recaptcha: null
 })
-const serverAddress = ref('http://127.0.0.1:8099')
+const serverAddress = ref(baseURL)
 
 const submitForm = () => {
     sessionStorage.setItem('baseURL', serverAddress.value)

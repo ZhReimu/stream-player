@@ -10,9 +10,17 @@ const request = axios.create({
     baseURL
 });
 
-request.interceptors.request.use((config) => {
+const getSessionURL = () => {
     const sessionURL = sessionStorage.getItem('baseURL')
-    config.baseURL = (sessionURL?.endsWith('/api/') ? sessionURL : sessionURL + '/api/') || baseURL
+    if (!sessionURL) return
+    if (sessionURL?.endsWith('/api/')) return sessionURL
+    if (sessionURL.endsWith('/')) return sessionURL + 'api/'
+    return sessionURL + '/api/'
+}
+
+request.interceptors.request.use((config) => {
+
+    config.baseURL = getSessionURL() || baseURL
     console.log(config.baseURL);
     const token = getToken()
     if (token) config.headers = {
