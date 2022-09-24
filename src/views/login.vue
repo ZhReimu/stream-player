@@ -21,7 +21,6 @@
 <script setup lang="ts">
 import { IXUser } from '@/config/x-type';
 import { login, setToken } from '@/api/filebrowser'
-import { baseURL } from '@/config/axios.config';
 import { XMessage } from '@/utils/x-message'
 
 const router = useRouter()

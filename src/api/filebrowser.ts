@@ -1,4 +1,4 @@
-import { request, baseURL } from "@/config/axios.config";
+import { request, getBaseURL } from "@/config/axios.config";
 import { IXUser, IUsage, IResource } from "@/config/x-type";
 
 const login = (user: IXUser) => {
@@ -14,7 +14,7 @@ const resources = (path: string = '/') => {
 }
 
 const downloadURL = (path: string) => {
-    return `${baseURL}raw${path.startsWith('/') ? '' : '/'}${path}?auth=${getToken()}`
+    return `${getBaseURL()}raw${path.startsWith('/') ? '' : '/'}${path}?auth=${getToken()}`
 }
 
 const renew = () => {

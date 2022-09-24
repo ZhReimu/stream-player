@@ -18,8 +18,10 @@ const getSessionURL = () => {
     return sessionURL + '/api/'
 }
 
+const getBaseURL = () => getSessionURL() || baseURL
+
 request.interceptors.request.use((config) => {
-    config.baseURL = getSessionURL() || baseURL
+    config.baseURL = getBaseURL()
     const token = getToken()
     if (token) config.headers = {
         "X-Auth": token
@@ -43,5 +45,5 @@ request.interceptors.response.use((response) => {
 
 export {
     request,
-    baseURL
+    getBaseURL
 }
