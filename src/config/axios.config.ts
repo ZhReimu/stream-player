@@ -11,6 +11,9 @@ const request = axios.create({
 });
 
 request.interceptors.request.use((config) => {
+    const sessionURL = sessionStorage.getItem('baseURL')
+    config.baseURL = (sessionURL?.endsWith('/api/') ? sessionURL : sessionURL + '/api/') || baseURL
+    console.log(config.baseURL);
     const token = getToken()
     if (token) config.headers = {
         "X-Auth": token

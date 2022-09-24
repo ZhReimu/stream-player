@@ -8,6 +8,9 @@
             <el-form-item label="密码">
                 <el-input v-model="loginForm.password" />
             </el-form-item>
+            <el-form-item label="服务器地址">
+                <el-input v-model="serverAddress" />
+            </el-form-item>
         </el-form>
         <div class="test">
             <el-button type="primary" @click="submitForm">登录</el-button>
@@ -26,8 +29,10 @@ const loginForm = reactive<IXUser>({
     password: 'admin',
     recaptcha: null
 })
+const serverAddress = ref('http://127.0.0.1:8099')
 
 const submitForm = () => {
+    sessionStorage.setItem('baseURL', serverAddress.value)
     login(loginForm).then((data) => {
         setToken(data)
         XMessage.success('登录成功', () => {
