@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { IXUser } from '@/config/x-type';
+import { IXUser, XStore } from '@/config/x-type';
 import { login, setToken, setUserName } from '@/api/filebrowser'
 import { XMessage } from '@/utils/x-message'
 
@@ -30,12 +30,13 @@ const loginForm = reactive<IXUser>({
     recaptcha: null
 })
 const serverAddress = ref(window.location.protocol + '//' + window.location.host)
+const store = useStore<XStore>()
 
 const submitForm = () => {
     sessionStorage.setItem('baseURL', serverAddress.value)
     login(loginForm).then((data) => {
         setToken(data)
-        setUserName(loginForm.username)
+        setUserName(store, loginForm.username)
         XMessage.success('登录成功', () => {
             router.push('/home')
         })

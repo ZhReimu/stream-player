@@ -1,7 +1,7 @@
 <template>
     <div class="x-header">
         <el-dropdown>
-            <span class="user"> 欢迎回来 {{getUserName()}} !
+            <span class="user"> 欢迎回来 {{getUserName(store)}} !
                 <el-icon class="el-icon--right">
                     <arrow-down />
                 </el-icon>
@@ -21,9 +21,11 @@
 <script setup lang="ts">
 import { useDark } from '@vueuse/core'
 import { getUserName } from '@/api/filebrowser';
+import { XStore } from '@/config/x-type';
 
 const isDark = useDark()
 const router = useRouter()
+const store = useStore<XStore>()
 
 const logout = () => {
     router.push('/')

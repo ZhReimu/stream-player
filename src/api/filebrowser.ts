@@ -1,5 +1,6 @@
 import { request, getBaseURL } from "@/config/axios.config";
-import { IXUser, IUsage, IResource } from "@/config/x-type";
+import { IXUser, IUsage, IResource, XStore } from "@/config/x-type";
+import { Store } from "vuex";
 
 const login = (user: IXUser) => {
     return request.post('/login', user) as Promise<string>
@@ -33,12 +34,12 @@ const clearData = () => {
     sessionStorage.clear()
 }
 
-const setUserName = (userName: string) => {
-    sessionStorage.setItem('userName', userName)
+const setUserName = (store: Store<XStore>, userName: string) => {
+    store.commit('setUserName', userName)
 }
 
-const getUserName = () => {
-    return sessionStorage.getItem('userName')
+const getUserName = (store: Store<XStore>) => {
+    return store == null ? 'unknown' : store.state.userName
 }
 
 export {

@@ -46,10 +46,16 @@ interface Tree {
     leaf?: boolean
 }
 
+interface XStore {
+    userName: string
+}
+
+
 export type {
     IXUser,
     IUsage,
     IResource,
     IItem,
-    Tree
+    Tree,
+    XStore
 }
